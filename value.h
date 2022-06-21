@@ -57,3 +57,18 @@ void Safe_Delete_Map(T& p)
 
 	p.clear();
 }
+
+// character info
+typedef struct _tagCharacterInfo
+{
+	int		iAttackMin;
+	int		iAttackMax;
+	int		iArmorMin;
+	int		iArmorMax;
+	int		iHP;
+	int		iHPMax;
+	int		iMP;
+	int		iMPMax;
+	int		iLevel;
+	int		iExp;
+}CHARACTERINFO, *PCHARACTERINFO;

@@ -72,5 +72,5 @@ int CCore::OutputMenu()
 	if (iMenu <= MM_NONE || iMenu > MM_EXIT)
 		return MM_NONE;
 
-	return 0;
+	return iMenu;
 }
