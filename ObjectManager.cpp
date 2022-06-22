@@ -23,7 +23,7 @@ bool CObjectManager::Init()
 	CMonster* pMonster = (CMonster*)CreateObject("Goblin", OT_MONSTER);
 
 	pMonster->SetName("°íºí¸°");
-	pMonster->SetCharacterInfo(5, 10, 3, 5, 100, 10, 1, 1000);
+	pMonster->SetCharacterInfo(10, 20, 3, 5, 100, 10, 1, 1000);
 	pMonster->SetGold(1000, 2000);
 
 	pMonster = (CMonster*)CreateObject("Troll", OT_MONSTER);

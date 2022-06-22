@@ -26,14 +26,9 @@ public:
 
 public:
     // 멤버함수 뒤에 const가 붙게되면 이 함수 내에서 멤버변수의 값을 변경할 수 없다.
-    int GetGoldMin()    const
+    int GetDropGold()   const
     {
-        return m_iGoldMin;
-    }
-
-    int GetGoldMax()    const
-    {
-        return m_iGoldMax;
+        return rand() % (m_iGoldMax - m_iGoldMin + 1) + m_iGoldMin;
     }
 
 public:
