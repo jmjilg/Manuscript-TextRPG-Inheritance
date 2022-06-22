@@ -25,6 +25,9 @@
     <Filter Include="03. Object\01. Character">
       <UniqueIdentifier>{0d3d4ace-186a-4a6c-ab2e-1f0e6aff6064}</UniqueIdentifier>
     </Filter>
+    <Filter Include="04. Store">
+      <UniqueIdentifier>{99827832-c316-47d8-9cf1-0b8d92c1b9c0}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
@@ -62,6 +65,18 @@
     </ClCompile>
     <ClCompile Include="ObjectManager.cpp">
       <Filter>03. Object</Filter>
+    </ClCompile>
+    <ClCompile Include="StoreManager.cpp">
+      <Filter>04. Store</Filter>
+    </ClCompile>
+    <ClCompile Include="Store.cpp">
+      <Filter>04. Store</Filter>
+    </ClCompile>
+    <ClCompile Include="StoreArmor.cpp">
+      <Filter>04. Store</Filter>
+    </ClCompile>
+    <ClCompile Include="StoreWeapon.cpp">
+      <Filter>04. Store</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -106,6 +121,18 @@
     </ClInclude>
     <ClInclude Include="Flags.h">
       <Filter>헤더 파일</Filter>
+    </ClInclude>
+    <ClInclude Include="StoreManager.h">
+      <Filter>04. Store</Filter>
+    </ClInclude>
+    <ClInclude Include="Store.h">
+      <Filter>04. Store</Filter>
+    </ClInclude>
+    <ClInclude Include="StoreArmor.h">
+      <Filter>04. Store</Filter>
+    </ClInclude>
+    <ClInclude Include="StoreWeapon.h">
+      <Filter>04. Store</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

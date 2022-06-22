@@ -151,6 +151,10 @@
     <ClCompile Include="StageHard.cpp" />
     <ClCompile Include="StageManager.cpp" />
     <ClCompile Include="StageNormal.cpp" />
+    <ClCompile Include="Store.cpp" />
+    <ClCompile Include="StoreArmor.cpp" />
+    <ClCompile Include="StoreManager.cpp" />
+    <ClCompile Include="StoreWeapon.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Character.h" />
@@ -166,6 +170,10 @@
     <ClInclude Include="StageHard.h" />
     <ClInclude Include="StageManager.h" />
     <ClInclude Include="StageNormal.h" />
+    <ClInclude Include="Store.h" />
+    <ClInclude Include="StoreArmor.h" />
+    <ClInclude Include="StoreManager.h" />
+    <ClInclude Include="StoreWeapon.h" />
     <ClInclude Include="value.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

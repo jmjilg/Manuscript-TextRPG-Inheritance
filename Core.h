@@ -4,7 +4,7 @@
 
 class CCore
 {
-public:
+public:คว
 	bool Init();
 	void Run();
 
