@@ -78,7 +78,7 @@ typedef struct _tagCharacterInfo
 // Item Info
 typedef struct _tagItemInfo
 {
-	ITEM_TYPE	eTYPE;
+	ITEM_TYPE	eType;
 	string		strTypename;
 	int			iPrice;
 	int			iSell;

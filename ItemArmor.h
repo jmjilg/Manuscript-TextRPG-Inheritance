@@ -17,6 +17,17 @@ private:
     int     m_iArmorMax;
 
 public:
+    int GetArmorMin()   const
+    {
+        return m_iArmorMin;
+    }
+
+    int GetArmorMax()   const
+    {
+        return m_iArmorMax;
+    }
+
+public:
     void SetArmorInfo(int iMin, int iMax)
     {
         m_iArmorMin = iMin;

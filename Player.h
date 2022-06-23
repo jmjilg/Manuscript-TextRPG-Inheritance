@@ -13,6 +13,13 @@ private:
         JOB_END
     };
 
+    enum EQUIP
+    {
+        EQ_WEAPON,
+        EQ_ARMOR,
+        EQ_END
+    };
+
 private:
     CPlayer();
     CPlayer(const CPlayer& player);
@@ -25,6 +32,7 @@ private:
     JOB     m_eJob;
     string  m_strJobName;
     int     m_iGold;
+    class CItem* m_pEquip[EQ_END];
 
 public:
     void AddGold(int iGold);
@@ -35,6 +43,9 @@ public:
     {
         return m_iGold;
     }
+
+public:
+    class CItem* Equip(class CItem* pItem);
 
 public:
     virtual bool Init();
