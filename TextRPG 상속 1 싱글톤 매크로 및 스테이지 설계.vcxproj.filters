@@ -28,6 +28,12 @@
     <Filter Include="04. Store">
       <UniqueIdentifier>{99827832-c316-47d8-9cf1-0b8d92c1b9c0}</UniqueIdentifier>
     </Filter>
+    <Filter Include="03. Object\02. Item">
+      <UniqueIdentifier>{398317db-d086-44bd-9304-f4f4871c5926}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="05. Inventory">
+      <UniqueIdentifier>{c53bd694-915a-4e84-b5d2-f0eed65a459d}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
@@ -77,6 +83,18 @@
     </ClCompile>
     <ClCompile Include="StoreWeapon.cpp">
       <Filter>04. Store</Filter>
+    </ClCompile>
+    <ClCompile Include="Item.cpp">
+      <Filter>03. Object\02. Item</Filter>
+    </ClCompile>
+    <ClCompile Include="ItemArmor.cpp">
+      <Filter>03. Object\02. Item</Filter>
+    </ClCompile>
+    <ClCompile Include="ItemWeapon.cpp">
+      <Filter>03. Object\02. Item</Filter>
+    </ClCompile>
+    <ClCompile Include="Inventory.cpp">
+      <Filter>05. Inventory</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -134,5 +152,20 @@
     <ClInclude Include="StoreWeapon.h">
       <Filter>04. Store</Filter>
     </ClInclude>
+    <ClInclude Include="Item.h">
+      <Filter>03. Object\02. Item</Filter>
+    </ClInclude>
+    <ClInclude Include="ItemArmor.h">
+      <Filter>03. Object\02. Item</Filter>
+    </ClInclude>
+    <ClInclude Include="ItemWeapon.h">
+      <Filter>03. Object\02. Item</Filter>
+    </ClInclude>
+    <ClInclude Include="Inventory.h">
+      <Filter>05. Inventory</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="ClassDiagram.cd" />
   </ItemGroup>
 </Project>

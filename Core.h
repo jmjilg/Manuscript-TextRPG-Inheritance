@@ -4,7 +4,7 @@
 
 class CCore
 {
-public:คว
+public:
 	bool Init();
 	void Run();
 
@@ -13,4 +13,3 @@ private:
 
 	DECLARE_SINGLE(CCore)
 };
-

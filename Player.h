@@ -31,6 +31,12 @@ public:
     void DropGold();
 
 public:
+    int GetGold()   const
+    {
+        return m_iGold;
+    }
+
+public:
     virtual bool Init();
     virtual void Render();
     virtual CPlayer* Clone();
