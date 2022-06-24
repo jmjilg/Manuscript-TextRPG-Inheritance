@@ -34,6 +34,12 @@
     <Filter Include="05. Inventory">
       <UniqueIdentifier>{c53bd694-915a-4e84-b5d2-f0eed65a459d}</UniqueIdentifier>
     </Filter>
+    <Filter Include="01. Core\01. File">
+      <UniqueIdentifier>{207eca64-4425-4734-8f2c-79da25a3f32d}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="06. Item Editor">
+      <UniqueIdentifier>{d4d6b096-70b3-48a7-8f85-8d0a12193414}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
@@ -95,6 +101,12 @@
     </ClCompile>
     <ClCompile Include="Inventory.cpp">
       <Filter>05. Inventory</Filter>
+    </ClCompile>
+    <ClCompile Include="FileStream.cpp">
+      <Filter>01. Core\01. File</Filter>
+    </ClCompile>
+    <ClCompile Include="EditorCore.cpp">
+      <Filter>소스 파일</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -163,6 +175,12 @@
     </ClInclude>
     <ClInclude Include="Inventory.h">
       <Filter>05. Inventory</Filter>
+    </ClInclude>
+    <ClInclude Include="FileStream.h">
+      <Filter>01. Core\01. File</Filter>
+    </ClInclude>
+    <ClInclude Include="EditorCore.h">
+      <Filter>헤더 파일</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
