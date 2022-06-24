@@ -20,7 +20,7 @@ public:
     void SetCharacterInfo(int iAtmin, int iAtMax, int iArMin, int iArMax,
         int iHP, int iMP, int iLevel, int iExp);
 
-    int GetDamage()
+    virtual int GetDamage()
     {
         // Max에서 Min을 빼고 1을 더하면 0에서 Max - Min 값 사이의 값이 나오게 된다.
         // 이 값에 Min을 더해주게 되면 Min 에서 Max - Min 값 사이의 값이 나오게 된다.
@@ -28,7 +28,7 @@ public:
         return rand() % (m_tInfo.iAttackMax - m_tInfo.iAttackMin + 1) + m_tInfo.iAttackMin;
     }
 
-    int GetArmor()
+    virtual int GetArmor()
     {
         return rand() % (m_tInfo.iArmorMax - m_tInfo.iArmorMin + 1) + m_tInfo.iArmorMin;
     }
@@ -38,6 +38,8 @@ public:
     bool CheckLevelUp();
     void DropExp();
     void FullHPMP();
+    void LevelUp();
+    void AddLevelUpStatus(const LEVELUPINFO& tInfo);
 
 public:
     virtual bool Init();

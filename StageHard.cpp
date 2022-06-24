@@ -2,6 +2,7 @@
 #include "ObjectManager.h"
 #include "Player.h"
 #include "Monster.h"
+#include "Core.h"
 
 CStageHard::CStageHard()
 {
@@ -57,6 +58,12 @@ void CStageHard::Run()
 				// 레벨업 조건을 만족했다면 true를 반환한다.
 				if (pPlayer->CheckLevelUp())
 				{
+					pPlayer->LevelUp();
+
+					// 능력치 상승
+					pPlayer->AddLevelUpStatus(GET_SINGLE(CCore)->GetLevelupInfo(pPlayer->GetJob()));
+
+					cout << "Level Up" << endl;
 				}
 
 				// 몬스터를 삭제하고 다시 복사해서 생성해준다.

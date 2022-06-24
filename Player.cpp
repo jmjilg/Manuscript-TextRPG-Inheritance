@@ -38,6 +38,46 @@ void CPlayer::DropGold()
 	m_iGold *= 0.9f;
 }
 
+int CPlayer::GetDamage()
+{
+		int iMin = m_tInfo.iAttackMin;
+		int iMax = m_tInfo.iAttackMax;
+		if (m_pEquip[EQ_WEAPON])
+		{
+			iMin += ((CItemWeapon*)m_pEquip[EQ_WEAPON])->GetAttackMin();
+			iMax += ((CItemWeapon*)m_pEquip[EQ_WEAPON])->GetAttackMax();
+
+			if (rand() % 9901 / 100.f <= ((CItemWeapon*)m_pEquip[EQ_WEAPON])->GetCritical())
+			{
+				cout << "Critical" << endl;
+				iMin *= 2;
+				iMax *= 2;
+			}
+		}
+
+		// Max에서 Min을 빼고 1을 더하면 0에서 Max - Min 값 사이의 값이 나오게 된다.
+		// 이 값에 Min을 더해주게 되면 Min 에서 Max - Min 값 사이의 값이 나오게 된다.
+		// 즉 Min - Max 사이의 값이 나오게 된다는 것이다.
+		return rand() % (iMax - iMin + 1) + iMin;
+}
+
+int CPlayer::GetArmor()
+{
+
+	int iMin = m_tInfo.iArmorMin;
+	int iMax = m_tInfo.iArmorMax;
+	if (m_pEquip[EQ_ARMOR])
+	{
+		iMin += ((CItemArmor*)m_pEquip[EQ_ARMOR])->GetArmorMin();
+		iMax += ((CItemArmor*)m_pEquip[EQ_ARMOR])->GetArmorMax();
+	}
+
+	// Max에서 Min을 빼고 1을 더하면 0에서 Max - Min 값 사이의 값이 나오게 된다.
+	// 이 값에 Min을 더해주게 되면 Min 에서 Max - Min 값 사이의 값이 나오게 된다.
+	// 즉 Min - Max 사이의 값이 나오게 된다는 것이다.
+	return rand() % (iMax - iMin + 1) + iMin;
+}
+
 CItem* CPlayer::Equip(CItem* pItem)
 {
 	// 장착하고자 하는 아이템의 타입에 따라 장착 부위가 달라져야 한다.
@@ -106,7 +146,7 @@ bool CPlayer::Init()
 		m_strJobName = "궁수";
 		SetCharacterInfo(12, 20, 10, 15, 400, 200, 1, 0);
 		break;
-	case JOB_MAGICION:
+	case JOB_MAGICIAN:
 		m_strJobName = "마법사";
 		SetCharacterInfo(20, 25, 5, 10, 300, 300, 1, 0);
 		break;
