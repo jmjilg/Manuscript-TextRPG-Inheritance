@@ -37,7 +37,7 @@
     <Filter Include="01. Core\01. File">
       <UniqueIdentifier>{207eca64-4425-4734-8f2c-79da25a3f32d}</UniqueIdentifier>
     </Filter>
-    <Filter Include="06. Item Editor">
+    <Filter Include="06. Editor">
       <UniqueIdentifier>{d4d6b096-70b3-48a7-8f85-8d0a12193414}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
@@ -106,7 +106,10 @@
       <Filter>01. Core\01. File</Filter>
     </ClCompile>
     <ClCompile Include="EditorCore.cpp">
-      <Filter>소스 파일</Filter>
+      <Filter>06. Editor</Filter>
+    </ClCompile>
+    <ClCompile Include="EditorMonster.cpp">
+      <Filter>06. Editor</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -180,7 +183,10 @@
       <Filter>01. Core\01. File</Filter>
     </ClInclude>
     <ClInclude Include="EditorCore.h">
-      <Filter>헤더 파일</Filter>
+      <Filter>06. Editor</Filter>
+    </ClInclude>
+    <ClInclude Include="EditorMonster.h">
+      <Filter>06. Editor</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

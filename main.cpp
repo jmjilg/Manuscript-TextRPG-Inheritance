@@ -1,25 +1,69 @@
 
 #include "Core.h"
+#include "EditorCore.h"
 
 /*
-숙제 : 방어구 상점을 완성시킨다.
-인벤토리 안의 아이템을 선택하여 장착하는 시스템을 만들어보자.
-장착된 아이템의 능력치를 적용해본다.
+숙제 : 아이템 설정기능을 만들어보자.
+몬스터 설정을 참고해서 제작한다.
 */
+
+enum GAME_MODE
+{
+	GM_NONE,
+	GM_INGAME,
+	GM_EDIT,
+	GM_EXIT
+};
 
 int main()
 {
 	srand((unsigned int)time(0));
 
-	if (!GET_SINGLE(CCore)->Init())
+	int		iGameMode = 0;
+
+	while (true)
 	{
-		DESTROY_SINGLE(CCore);
-		return 0;
+		system("cls");
+		cout << "1. 게임모드" << endl;
+		cout << "2. 게임툴" << endl;
+		cout << "3. 종료" << endl;
+		cout << "메뉴를 선택하세요 : ";
+		iGameMode = Input<int>();
+
+		if (iGameMode <= GM_NONE || iGameMode > GM_EXIT)
+			continue;
+
+		else if (iGameMode == GM_EXIT)
+			return 0;
+
+		break;
 	}
 
-	GET_SINGLE(CCore)->Run();
+	switch (iGameMode)
+	{
+	case GM_INGAME:
+		if (!GET_SINGLE(CCore)->Init())
+		{
+			DESTROY_SINGLE(CCore);
+			return 0;
+		}
 
-	DESTROY_SINGLE(CCore);
+		GET_SINGLE(CCore)->Run();
+
+		DESTROY_SINGLE(CCore);
+		break;
+	case GM_EDIT:
+		if (!GET_SINGLE(CEditorCore)->Init())
+		{
+			DESTROY_SINGLE(CEditorCore);
+			return 0;
+		}
+
+		GET_SINGLE(CEditorCore)->Run();
+
+		DESTROY_SINGLE(CEditorCore);
+		break;
+	}
 
 	return 0;
 }

@@ -1,4 +1,5 @@
 #include "Monster.h"
+#include "FileStream.h"
 
 CMonster::CMonster()
 {
@@ -40,4 +41,21 @@ CMonster* CMonster::Clone()
 	// 이렇게 해주면 이 객체를 복사한 새로운 객체를 동적할당 하여 그 메모리 주소를
 	// 반환해주게 된다.
 	return new CMonster(*this);
+}
+
+void CMonster::Save(CFileStream* pFile)
+{
+	CCharacter::Save(pFile);
+
+	// 나의 기능을 추가한다.
+	pFile->Write(&m_iGoldMin, 4);
+	pFile->Write(&m_iGoldMax, 4);
+
+}
+
+void CMonster::Load(CFileStream* pFile)
+{
+	CCharacter::Load(pFile);
+	pFile->Read(&m_iGoldMin, 4);
+	pFile->Read(&m_iGoldMax, 4);
 }

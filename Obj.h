@@ -34,5 +34,7 @@ public:
 	virtual bool Init();
 	virtual void Render() =0;
 	virtual CObj* Clone() = 0;
+	virtual void Save(class CFileStream* pFile);
+	virtual void Load(class CFileStream* pFile);
 };
 

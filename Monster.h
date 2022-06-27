@@ -12,6 +12,7 @@ public:
 
 private:
     friend class CObjectManager;
+    friend class CEditorMonster;
 
 private:
     int     m_iGoldMin;
@@ -35,5 +36,7 @@ public:
     virtual bool Init();
     virtual void Render();
     virtual CMonster* Clone();
+    virtual void Save(class CFileStream* pFile);
+    virtual void Load(class CFileStream* pFile);
 };
 

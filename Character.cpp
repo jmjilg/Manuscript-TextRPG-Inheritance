@@ -1,4 +1,5 @@
 #include "Character.h"
+#include "FileStream.h"
 
 CCharacter::CCharacter()
 {
@@ -92,4 +93,18 @@ bool CCharacter::Init()
 
 void CCharacter::Render()
 {
+}
+
+void CCharacter::Save(CFileStream* pFile)
+{
+	CObj::Save(pFile);
+
+	pFile->Write(&m_tInfo, sizeof(m_tInfo));
+}
+
+void CCharacter::Load(CFileStream* pFile)
+{
+	CObj::Load(pFile);
+
+	pFile->Read(&m_tInfo, sizeof(m_tInfo));
 }
