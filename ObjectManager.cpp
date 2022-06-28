@@ -1,6 +1,7 @@
 #include "ObjectManager.h"
 #include "Player.h"
 #include "Monster.h"
+#include "FileStream.h"
 
 DEFINITION_SINGLE(CObjectManager)
 
@@ -15,28 +16,50 @@ CObjectManager::~CObjectManager()
 bool CObjectManager::Init()
 {
 	// 플레이어를 생성한다.
-	CObj*	pPlayer = CreateObject("Player", OT_PLAYER);
-	
-	// CreateObject 함수는 몬스터를 생성하고 CObj* 타입을 리턴한다.
-	// 그런데 몬스터의 기본 변수들은 몬스터 클래스나 character 클래스가 가지고 있으므로
-	// 몬스터 클래스로 형변환하여 저장해두고 기능을 사용하도록 한다.
-	CMonster* pMonster = (CMonster*)CreateObject("Goblin", OT_MONSTER);
+	CObj* pPlayer = CreateObject("Player", OT_PLAYER);
 
-	pMonster->SetName("고블린");
-	pMonster->SetCharacterInfo(10, 20, 3, 5, 100, 10, 1, 1000);
-	pMonster->SetGold(1000, 2000);
+	// 몬스터 목록 파일을 읽어온다.
+	CFileStream file("MonsterList.mtl", "rb");
 
-	pMonster = (CMonster*)CreateObject("Troll", OT_MONSTER);
+	if (file.GetOpen())
+	{
+		int iMonsterCount = 0;
 
-	pMonster->SetName("트롤");
-	pMonster->SetCharacterInfo(50, 80, 40, 60, 2000, 300, 5, 7000);
-	pMonster->SetGold(5000, 10000);
+		file.Read(&iMonsterCount, 4);
 
-	pMonster = (CMonster*)CreateObject("Dragon", OT_MONSTER);
+		for (int i = 0; i < iMonsterCount; ++i)
+		{
+			CMonster* pMonster = new CMonster;
 
-	pMonster->SetName("드래곤");
-	pMonster->SetCharacterInfo(150, 250, 150, 250, 10000, 10000, 10, 25000);
-	pMonster->SetGold(30000, 50000);
+			pMonster->Load(&file);
+
+			m_mapObj.insert(make_pair(pMonster->GetName(), pMonster));
+		}
+	}
+
+	else
+	{
+		// CreateObject 함수는 몬스터를 생성하고 CObj* 타입을 리턴한다.
+		// 그런데 몬스터의 기본 변수들은 몬스터 클래스나 character 클래스가 가지고 있으므로
+		// 몬스터 클래스로 형변환하여 저장해두고 기능을 사용하도록 한다.
+		CMonster* pMonster = (CMonster*)CreateObject("Goblin", OT_MONSTER);
+
+		pMonster->SetName("고블린");
+		pMonster->SetCharacterInfo(10, 20, 3, 5, 100, 10, 1, 1000);
+		pMonster->SetGold(1000, 2000);
+
+		pMonster = (CMonster*)CreateObject("Troll", OT_MONSTER);
+
+		pMonster->SetName("트롤");
+		pMonster->SetCharacterInfo(50, 80, 40, 60, 2000, 300, 5, 7000);
+		pMonster->SetGold(5000, 10000);
+
+		pMonster = (CMonster*)CreateObject("Dragon", OT_MONSTER);
+
+		pMonster->SetName("드래곤");
+		pMonster->SetCharacterInfo(150, 250, 150, 250, 10000, 10000, 10, 25000);
+		pMonster->SetGold(30000, 50000);
+	}
 
 	return true;
 }
@@ -94,4 +117,29 @@ CObj* CObjectManager::CloneObject(const string& strKey)
 
 	// 만약 찾았다면 원본 객체를 복사한 새로운 객체를 만들어서 반환한다.
 	return pOrigin->Clone();
+}
+
+CObj* CObjectManager::CloneObject(STAGE_TYPE eType)
+{
+	vector<CMonster*>	vecMonster;
+
+	unordered_map<string, CObj*>::iterator	iter;
+
+	for (iter = m_mapObj.begin(); iter != m_mapObj.end(); ++iter)
+	{
+		if (iter->second->GetObjectType() == OT_MONSTER)
+		{
+			CMonster* pMonster = (CMonster*)iter->second;
+
+			if (pMonster->GetStageType() == eType)
+				vecMonster.push_back(pMonster);
+		}
+	}
+	
+	if (vecMonster.empty())
+		return NULL;
+
+	int idx = rand() % vecMonster.size();
+
+	return vecMonster[idx]->Clone();
 }

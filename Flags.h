@@ -26,3 +26,12 @@ enum ITEM_TYPE
 	IT_ARMOR,
 	IT_MAX
 };
+
+enum STAGE_TYPE
+{
+	ST_NONE,
+	ST_EASY,
+	ST_NORMAL,
+	ST_HARD,
+	ST_BACK
+};

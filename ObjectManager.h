@@ -17,6 +17,7 @@ public:
 	CObj* CreateObject(const string& strKey, OBJECT_TYPE eType);
 	CObj* FindObject(const string& strKey);
 	CObj* CloneObject(const string& strKey);
+	CObj* CloneObject(STAGE_TYPE eType);
 
 	DECLARE_SINGLE(CObjectManager)
 };

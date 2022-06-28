@@ -131,6 +131,20 @@ void CEditorMonster::Insert()
 
 	pMonster->SetGold(iGoldMin, iGoldMax);
 
+	// 난이도를 선택한다.
+	int iStage = ST_NONE;
+
+	while (iStage <= ST_NONE || iStage >= ST_BACK)
+	{
+		cout << "1. Easy" << endl;
+		cout << "2. Normal" << endl;
+		cout << "3. Hard" << endl;
+		cout << "난이도를 선택하세요 : ";
+		iStage = Input<int>();
+	}
+
+	pMonster->SetStageType((STAGE_TYPE)iStage);
+
 	m_vecMonster.push_back(pMonster);
 }
 
@@ -156,7 +170,7 @@ void CEditorMonster::Save()
 	system("cls");
 	cout << "================= 파일 저장 =================" << endl;
 
-	CFileStream file("MonsterList.msl", "wb");
+	CFileStream file("MonsterList.mtl", "wb");
 
 	// 몬스터 수를 저장한다.
 	// size_t : unsigned int를 typedef 해놓은 것이다.
