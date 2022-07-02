@@ -11,6 +11,7 @@ protected:
 private:
     friend class CStore;
     friend class CStoreWeapon;
+    friend class CEditorItem;
 
 private:
     int     m_iAttackMin;
@@ -40,5 +41,7 @@ public:
     virtual bool Init();
     virtual void Render();
     virtual CItemWeapon* Clone();
+    virtual void Save(class CFileStream* pFile);
+    virtual void Load(class CFileStream* pFile);
 };
 

@@ -111,6 +111,9 @@
     <ClCompile Include="EditorMonster.cpp">
       <Filter>06. Editor</Filter>
     </ClCompile>
+    <ClCompile Include="EditorItem.cpp">
+      <Filter>06. Editor</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="value.h">
@@ -188,9 +191,11 @@
     <ClInclude Include="EditorMonster.h">
       <Filter>06. Editor</Filter>
     </ClInclude>
+    <ClInclude Include="EditorItem.h">
+      <Filter>06. Editor</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <None Include="ClassDiagram.cd" />
-    <None Include="ClassDiagram1.cd" />
   </ItemGroup>
 </Project>

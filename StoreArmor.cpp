@@ -3,6 +3,7 @@
 #include "Player.h"
 #include "ObjectManager.h"
 #include "Inventory.h"
+#include "FileStream.h"
 
 CStoreArmor::CStoreArmor()
 {
@@ -15,7 +16,7 @@ CStoreArmor::~CStoreArmor()
 bool CStoreArmor::Init()
 {
 	//	판매 목록을 만들어준다.
-	CItemArmor* pItem = (CItemArmor*)CreateItem("천갑옷", IT_ARMOR, 1000, 500,
+	/*CItemArmor* pItem = (CItemArmor*)CreateItem("천갑옷", IT_ARMOR, 1000, 500,
 		"천으로 만든 옷");
 	pItem->SetArmorInfo(3, 5);
 
@@ -25,7 +26,34 @@ bool CStoreArmor::Init()
 
 	pItem = (CItemArmor*)CreateItem("가시갑옷", IT_ARMOR, 25000, 12500,
 		"모찌가 좋아하는 가시갑옷");
-	pItem->SetArmorInfo(30, 50);
+	pItem->SetArmorInfo(30, 50);*/
+
+	// 방어구 상점 불러오기
+	CFileStream file("StoreArmor.sar", "rb");
+	if (file.GetOpen())
+	{
+		// 방어구 상점 방어구 수를 저장한다.
+		size_t	iCount = 0;
+
+		file.Read(&iCount, 4);
+
+		for (size_t i = 0; i < iCount; ++i)
+		{
+			CItem* pItem = new CItemArmor;
+
+			if (!pItem->Init())
+			{
+				SAFE_DELETE(pItem);
+				return false;
+			}
+
+			pItem->Load(&file);
+
+			m_vecItem.push_back(pItem);
+		}
+
+		file.Close();
+	}
 
 	return true;
 }
